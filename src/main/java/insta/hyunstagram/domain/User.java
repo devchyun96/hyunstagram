@@ -9,14 +9,15 @@ import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)                // 화면에 상속받은 createdDate를 보이기 위함
+@EqualsAndHashCode(callSuper = true)        // 이하 동문
 @Table(name = "users")
 public class User extends BaseTimeEntity {
 
@@ -44,6 +45,14 @@ public class User extends BaseTimeEntity {
     @Column
     private Gender gender;
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private List<Like> likes;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private List<Follow> follows;
 
     public void userUpdate(String nickname, String password) {
         this.nickname=nickname;

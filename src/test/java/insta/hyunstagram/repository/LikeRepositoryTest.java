@@ -4,6 +4,9 @@ import insta.hyunstagram.domain.Feed;
 import insta.hyunstagram.domain.Like;
 import insta.hyunstagram.domain.Role;
 import insta.hyunstagram.domain.User;
+import insta.hyunstagram.repository.feed.FeedRepository;
+import insta.hyunstagram.repository.like.LikeRepository;
+import insta.hyunstagram.repository.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,29 +83,29 @@ class LikeRepositoryTest {
         feed3 = feedRepository.save(feed3);
 
         Like like1 = Like.builder()
-                .user(user1)
+                .user(user1.getId())
                 .feed(feed1.getId())
                 .build();
 
         Like like2 = Like.builder()
-                .user(user2)
+                .user(user2.getId())
                 .feed(feed1.getId())
                 .build();
         Like like3 = Like.builder()
-                .user(user3)
+                .user(user3.getId())
                 .feed(feed1.getId())
                 .build();
         Like like4 = Like.builder()
-                .user(user1)
+                .user(user1.getId())
                 .feed(feed2.getId())
                 .build();
 
         Like like5 = Like.builder()
-                .user(user2)
+                .user(user2.getId())
                 .feed(feed2.getId())
                 .build();
         Like like6 = Like.builder()
-                .user(user3)
+                .user(user3.getId())
                 .feed(feed3.getId())
                 .build();
 
@@ -112,7 +115,6 @@ class LikeRepositoryTest {
         likeRepository.save(like4);
         likeRepository.save(like5);
         likeRepository.save(like6);
-
 
         int count1 = likeRepository.countAllByFeed(feed1.getId());
         int count2 = likeRepository.countAllByFeed(feed2.getId());

@@ -2,6 +2,7 @@ package insta.hyunstagram.repository;
 
 import insta.hyunstagram.domain.Role;
 import insta.hyunstagram.domain.User;
+import insta.hyunstagram.repository.user.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,5 +55,4 @@ public class UserRepositoryTest {
         assertThat(user.getNickname()).isEqualTo(nickname);
         assertThat(user.getEmail()).isEqualTo(email);
     }
-
 }

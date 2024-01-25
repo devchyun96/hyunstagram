@@ -1,4 +1,4 @@
-package insta.hyunstagram.repository;
+package insta.hyunstagram.repository.user;
 
 import insta.hyunstagram.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @EntityListeners(value = AuditingEntityListener.class)
 @Getter
-@MappedSuperclass
+@MappedSuperclass   // test 에서  상속받은 createdDate를 화면에 보이게 하기 위함
 public class BaseTimeEntity {
 
     @CreatedDate

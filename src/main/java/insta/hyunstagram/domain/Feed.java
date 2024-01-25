@@ -8,7 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Feed {
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class Feed extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
