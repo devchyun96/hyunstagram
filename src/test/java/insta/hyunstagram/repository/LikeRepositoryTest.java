@@ -14,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
@@ -119,6 +121,8 @@ class LikeRepositoryTest {
         int count1 = likeRepository.countAllByFeed(feed1.getId());
         int count2 = likeRepository.countAllByFeed(feed2.getId());
         int count3 = likeRepository.countAllByFeed(feed3.getId());
+
+        feedRepository.findByUser(user2.getId()).forEach(System.out::println);
 
         System.out.println("1번 피드의 좋아요 개수: " + count1);
         System.out.println("2번 피드의 좋아요 개수: " + count2);

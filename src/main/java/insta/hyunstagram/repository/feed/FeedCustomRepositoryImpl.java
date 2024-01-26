@@ -12,16 +12,28 @@ public class FeedCustomRepositoryImpl implements FeedCustomRepository{
 
     // 피드에 필요한 정보
     /*
-      username, photo, following, follower, feed, comment, like, profilePhoto
+        users: username, profilePhoto
+        feed: photo, feed
+        follow:  following, follower
+        like: like
+        comment: List<comment> comment(id,userid,content)
      */
 
     private final JPAQueryFactory queryFactory;
 
     public List<Feed> findAllFeed(){
         return queryFactory.selectFrom(QFeed.feed)
-                .innerJoin(QFeed.feed.user)
-//                .innerJoin(QFeed.feed.comment)
-                .fetchJoin().fetch();
+                .limit(1000)
+                .orderBy(QFeed.feed.id.desc())
+                .fetch()
+                ;
+    }
+    public List<Feed> findByUser(Long id){
+        QFeed feed=new QFeed(QFeed.feed);
+        return queryFactory.selectFrom(feed)
+                .where(feed.user.id.eq(id))
+                .orderBy(feed.id.desc())
+                .fetch();
     }
 
 }
