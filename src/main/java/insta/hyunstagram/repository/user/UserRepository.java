@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface UserRepository extends JpaRepository<User,Long> {
-    List<User> findByUsernameLikeOrNicknameLike(String query);
+//    List<User> findByUsernameLike(String query);
 
 }

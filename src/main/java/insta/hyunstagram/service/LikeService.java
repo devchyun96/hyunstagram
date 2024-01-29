@@ -29,14 +29,14 @@ public class LikeService {
         return likeRepository.countAllByFeed(feed.getId());
     }
 
-    @Transactional
-    public int deleteLike(Long id){
-        User user = userRepository.findById(id).orElseThrow(null);
-        Like like = likeRepository.findByUser(user.getId());
-        if(like!=null){
-            likeRepository.deleteByUser(id);
-            return 1;
-        }
-        else return 0;
-    }
+//    @Transactional
+//    public int deleteLike(Long id){
+//        User user = userRepository.findById(id).orElseThrow(null);
+//        Like like = likeRepository.findByUser(user.getId());
+//        if(like!=null){
+//            likeRepository.deleteByUser(id);
+//            return 1;
+//        }
+//        else return 0;
+//    }
 }

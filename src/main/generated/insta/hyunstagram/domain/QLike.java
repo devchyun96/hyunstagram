@@ -23,8 +23,6 @@ public class QLike extends EntityPathBase<Like> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Long> user = createNumber("user", Long.class);
-
     public QLike(String variable) {
         super(Like.class, forVariable(variable));
     }
