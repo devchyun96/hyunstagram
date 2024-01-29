@@ -33,7 +33,7 @@ public class UserController {
         return new ResponseEntity<>(userService.findOne(id),HttpStatus.OK);
     }
 
-    @PutMapping("/api")
+    @PutMapping("/api/update")
     public ResponseEntity<?> update(@RequestBody User user){
         return new ResponseEntity<>(userService.update(user),HttpStatus.OK);
     }
