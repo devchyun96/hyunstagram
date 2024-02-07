@@ -1,15 +1,15 @@
 package insta.hyunstagram.dto.feeddto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import insta.hyunstagram.domain.Feed;
+import insta.hyunstagram.dto.userdto.UserResponseDto;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Builder
 public class FeedResponseDto {
     private Long id;
@@ -17,6 +17,12 @@ public class FeedResponseDto {
     private String content;
 //    private List<Comment> comments;
     private Long userId;
-    private long likeCount;
+
+    public FeedResponseDto(Feed entity){
+        this.id=entity.getId();
+        this.title=entity.getTitle();
+        this.content=entity.getContent();
+        this.userId=entity.getUser().getId();
+    }
 
 }

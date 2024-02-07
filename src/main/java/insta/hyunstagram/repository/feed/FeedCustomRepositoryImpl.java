@@ -3,6 +3,7 @@ package insta.hyunstagram.repository.feed;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import insta.hyunstagram.domain.Feed;
 import insta.hyunstagram.domain.QFeed;
+import insta.hyunstagram.domain.QUser;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -29,9 +30,12 @@ public class FeedCustomRepositoryImpl implements FeedCustomRepository{
                 ;
     }
     public List<Feed> findByUser(Long id){
-        QFeed feed=new QFeed(QFeed.feed);
+        QFeed feed=QFeed.feed;
+        QUser user=QUser.user;
         return queryFactory.selectFrom(feed)
                 .where(feed.user.id.eq(id))
+                .leftJoin(feed.user, user)
+                .fetchJoin()
                 .orderBy(feed.id.desc())
                 .fetch();
     }

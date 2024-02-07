@@ -30,4 +30,5 @@ public class UserResponseDto {
         this.gender=entity.getGender();
         this.role=entity.getRole();
     }
+
 }
