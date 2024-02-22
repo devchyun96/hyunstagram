@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class FollowService {
     private final FollowRepository followRepository;
     private final UserRepository userRepository;
-    public void saveFollow(Follow follow){
-        followRepository.save(follow);
+    public Follow saveFollow(Follow follow){
+       return followRepository.save(follow);
     }
     public void deleteFollow(Follow follow){
         followRepository.deleteById(follow.getFollower().getId());

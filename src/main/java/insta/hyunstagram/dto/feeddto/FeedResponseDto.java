@@ -24,5 +24,4 @@ public class FeedResponseDto {
         this.content=entity.getContent();
         this.userId=entity.getUser().getId();
     }
-
 }
